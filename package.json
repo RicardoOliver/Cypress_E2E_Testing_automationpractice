@@ -1,0 +1,65 @@
+{
+  "name": "automationpractice-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install",
+    "cypress:open": "cypress open",
+    "test:ci:mocha": "cypress run --spec cypress/integration/*.spec.js --reporter-options configFile=reporter-config.json",
+    "record": "cypress run --record --key a05a0a53-e621-489e-89e9-394723bbf904",
+    "cypress-dashboard-run": "npx cypress run --record --key a8a60a33-d335-47b1-b6c0-88e7d0bb2ce8",
+    "generate-multi-cucumber-html-report": "node cypress\\cucumber-html-report.js"
+  },
+  "keywords": [
+    "cypress",
+    "test",
+    "automation",
+    "e2e",
+    "cucumber",
+    "visual",
+    "testing"
+  ],
+  "author": "Ricardo Oliveira",
+  "license": "MIT",
+  "standard": {
+    "globals": [
+      "Cypress",
+      "cy",
+      "expect",
+      "localStorage",
+      "credentials",
+      "describe",
+      "it",
+      "before",
+      "beforeEach"
+    ]
+  },
+  "dependencies": {
+    "cypress-localstorage-commands": "^2.2.5",
+    "cypress-tags": "^0.3.0",
+    "date-fns": "^3.6.0",
+    "dayjs": "^1.11.9",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^16.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "^13.11.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "multiple-cucumber-html-reporter": "^3.6.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/step_definitions",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}

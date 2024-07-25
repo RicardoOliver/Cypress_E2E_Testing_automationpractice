@@ -1,0 +1,82 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Autenticar usuario no site automationpractice",
+    "line": 1,
+    "id": "autenticar-usuario-no-site-automationpractice",
+    "tags": [],
+    "uri": "logar_automationpractice.feature",
+    "elements": [
+      {
+        "id": "autenticar-usuario-no-site-automationpractice;criar-acesso-de-login-automationpractice",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "criar acesso de login automationpractice",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "que estou na tela de automationpractice",
+            "result": {
+              "status": "passed",
+              "duration": 4263000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "deve validar a tela de inicio automationpractice",
+            "result": {
+              "status": "passed",
+              "duration": 37000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "devo clicar em Sign in",
+            "result": {
+              "status": "passed",
+              "duration": 3939000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "devo criar uma conta",
+            "result": {
+              "status": "passed",
+              "duration": 3848000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "adicionar suas informações pessoais",
+            "result": {
+              "status": "passed",
+              "duration": 7268000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "deve validar a mensagem Your account has been created.",
+            "result": {
+              "status": "passed",
+              "duration": 4528000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
