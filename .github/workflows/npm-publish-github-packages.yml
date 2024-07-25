@@ -42,3 +42,11 @@ jobs:
         with:
           name: cucumber-report
           path: cypress/reports
+          
+      - name: Armazenar os resultados dos testes em screenshots
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: cypress-screenshots-firefox
+          path: ./cypress/screenshots
+          retention-days: 30
