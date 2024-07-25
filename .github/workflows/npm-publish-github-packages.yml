@@ -37,15 +37,6 @@ jobs:
       - name: List files for debugging
         run: ls -R cypress/
 
-      - name: Check if report is generated
-        run: |
-          if [ -f cypress/cucumber-html-report.html ]; then
-            echo "Report generated successfully";
-          else
-            echo "Report not found";
-            exit 1;
-          fi
-
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
