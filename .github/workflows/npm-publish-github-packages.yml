@@ -27,6 +27,7 @@ jobs:
 
       - name: Instalar as dependências
         run: npm install
+
       - name: Executar os testes
         run: npx cypress run
 
@@ -38,3 +39,8 @@ jobs:
         with:
           name: cucumber-report
           path: cypress/cucumber-json
+
+      - name: Download HTML Report
+        uses: actions/download-artifact@v3
+        with:
+          name: cucumber-report
