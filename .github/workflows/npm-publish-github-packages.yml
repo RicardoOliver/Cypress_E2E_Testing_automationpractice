@@ -38,9 +38,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-report
-          path: cypress/cucumber-json
-
-      - name: Download HTML Report
-        uses: actions/download-artifact@v3
-        with:
-          name: cucumber-report
+          path: cypress/cucumber-html-report.html
