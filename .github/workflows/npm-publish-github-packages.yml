@@ -21,17 +21,16 @@ jobs:
       - name: Passo 1 - Obter cópia do código-fonte do repositório
         uses: actions/checkout@v3.3.0
 
-      - name: Passo 2 - Instalar dependências, Executar testes no navegador chrome em modo headless (2º plano) em um ambiente de desenvolvimento e Gerar os resultados dos testes
-        uses: cypress-io/github-action@v5.0.8
-        with:
-          install-command: npm install --force
-          browser: chrome
-          spec: ${{ github.event.inputs.spec }}
+      - name: Passo 2 - Instalar dependências
+        run: npm install --force
 
-      - name: Passo 3 - Gerar relatório HTML do Cucumber
-        run: node cypress/cucumber-html-report.js
+      - name: Passo 3 - Executar testes no navegador chrome em modo headless (2º plano)
+        run: npx cypress run --browser chrome --headless --spec ${{ github.event.inputs.spec }}
 
-      - name: Passo 4 - Armazenar o relatório HTML do Cucumber
+      - name: Passo 4 - Gerar relatório HTML do Cucumber
+        run: npm run generate-multi-cucumber-html-report
+
+      - name: Passo 5 - Armazenar o relatório HTML do Cucumber
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
@@ -39,7 +38,7 @@ jobs:
           path: ./cucumber-report
           retention-days: 30
 
-      - name: Passo 5 - Armazenar os resultados dos testes em vídeos
+      - name: Passo 6 - Armazenar os resultados dos testes em vídeos
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
@@ -47,14 +46,14 @@ jobs:
           path: ./cypress/videos
           retention-days: 30
 
-      - name: Passo 6 - Armazenar os resultados dos testes em screenshots
+      - name: Passo 7 - Armazenar os resultados dos testes em screenshots
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: cypress-screenshots-chrome
           path: ./cypress/screenshots
           retention-days: 30
-  
+
   cypress-firefox:
     needs: cypress-chrome
     runs-on: ubuntu-latest
@@ -65,14 +64,13 @@ jobs:
       - name: Passo 1 - Obter cópia do código-fonte do repositório
         uses: actions/checkout@v3.3.0
 
-      - name: Passo 2 - Instalar dependências, Executar testes no navegador firefox em modo headless (2º plano) em um ambiente de desenvolvimento e Gerar os resultados dos testes
-        uses: cypress-io/github-action@v5.0.8
-        with:
-          install-command: npm install --force
-          command: npm run test:ff
-          browser: firefox
+      - name: Passo 2 - Instalar dependências
+        run: npm install --force
 
-      - name: Passo 3 - Armazenar os resultados dos testes em screenshots 
+      - name: Passo 3 - Executar testes no navegador firefox em modo headless (2º plano)
+        run: npx cypress run --browser firefox --headless --spec ${{ github.event.inputs.spec }}
+
+      - name: Passo 4 - Armazenar os resultados dos testes em screenshots 
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
@@ -92,16 +90,13 @@ jobs:
           node-version: '20.10.0'
 
       - name: Install dependencies
-        run: npm install
-        
-      - name: Fix Cypress permissions
-        run: sudo chmod +x ./node_modules/.bin/cypress
+        run: npm install --force
         
       - name: Cypress run
-        run: npx cypress run
+        run: npm run cypress-dashboard-run
 
       - name: Gerar relatório HTML do Cucumber
-        run: node cypress/cucumber-html-report.js
+        run: npm run generate-multi-cucumber-html-report
 
       - name: Armazenar o relatório HTML do Cucumber
         uses: actions/upload-artifact@v3
