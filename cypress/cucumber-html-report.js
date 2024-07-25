@@ -35,7 +35,7 @@ report.generate({
 		title: "Run info",
 
 		data: [
-			{ label: "Project", value: "Diligência" },
+			{ label: "Project", value: "automationpractice" },
 
 			{ label: "Release", value: "1.0.1" },
 
