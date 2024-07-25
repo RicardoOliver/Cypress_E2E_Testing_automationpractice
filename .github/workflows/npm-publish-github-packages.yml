@@ -30,9 +30,6 @@ jobs:
       - name: Executar os testes
         run: npx cypress run
 
-      - name: Run Cypress tests
-        run: npm run test:ci:mocha
-
       - name: Generate Cucumber HTML Report
         run: npm run generate-multi-cucumber-html-report
 
