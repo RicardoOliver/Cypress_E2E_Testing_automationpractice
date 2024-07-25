@@ -89,7 +89,7 @@ jobs:
           command: npm run test:ff
           browser: firefox
 
-      - name: Passo 3 - Armazenar os resultados dos testes em screenshots
+      - name: Passo 3 - Armazenar os resultados dos testes em screenshots 
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
