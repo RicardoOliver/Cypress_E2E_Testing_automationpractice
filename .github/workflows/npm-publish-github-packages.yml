@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Atualizado para v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Atualizado para v3
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -38,13 +38,13 @@ jobs:
         run: ls -R cypress/
 
       - name: Upload test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4  # Atualizado para v4
         with:
           name: cucumber-report
           path: cypress/reports
           
       - name: Armazenar os resultados dos testes em screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Atualizado para v4
         if: ${{ always() }}
         with:
           name: cypress-screenshots-firefox
