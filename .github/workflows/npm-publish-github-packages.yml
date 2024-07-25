@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Usar v4 da ação checkout
+        uses: actions/checkout@v4  
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Usar v3 da ação setup-node
+        uses: actions/setup-node@v4  
         with:
           node-version: ${{ matrix.node-version }}
 
