@@ -34,6 +34,9 @@ jobs:
       - name: Generate Cucumber HTML Report
         run: npm run generate-multi-cucumber-html-report
 
+      - name: List files for debugging
+        run: ls -R cypress/
+
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
