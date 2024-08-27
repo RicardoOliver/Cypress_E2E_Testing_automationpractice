@@ -24,7 +24,7 @@ Este projeto é uma suíte de testes automatizados utilizando Cypress para reali
 
 
 
-- [multiple-cucumber-html-reporter]([https://www.cypress.io/](https://www.npmjs.com/package/multiple-cucumber-html-reporter)) : Reporter customizado para Cypress que gera relatórios em HTML.
+- [multiple-cucumber-html-reporter](https://github.com/WasiqB/multiple-cucumber-html-reporter#readme) : Reporter customizado para Cypress que gera relatórios em HTML.
   
 - [Cypress](https://www.cypress.io/) : Framework de teste de front-end que facilita a automação de testes de integração e de ponta a ponta. 
 
