@@ -51,9 +51,9 @@ jobs:
           path: ./cypress/screenshots
           retention-days: 30
 
-      - name: Generate Job Summary
+      - name: Generate Job Summary with Table
         if: always()
         run: |
-          echo "### Cypress Results" >> $GITHUB_STEP_SUMMARY
-          echo "Result    Passed ✅  Failed ❌  Pending ✋  Skipped ↩️  Duration 🕗" >> $GITHUB_STEP_SUMMARY
-          echo "Passing ✅    $(jq '.totalPassed' cypress/reports/job-summary.json)        $(jq '.totalFailed' cypress/reports/job-summary.json)          $(jq '.totalPending' cypress/reports/job-summary.json)         $(jq '.totalSkipped' cypress/reports/job-summary.json)       $(jq '.runDuration' cypress/reports/job-summary.json | awk '{print $1/1000 "s"}')" >> $GITHUB_STEP_SUMMARY
+          echo "<h2>Cypress Results</h2>" >> $GITHUB_STEP_SUMMARY
+          echo "<table><tr><th>Result</th><th>Passed :white_check_mark:</th><th>Failed :x:</th><th>Pending :hand:</th><th>Skipped :leftwards_arrow_with_hook:</th><th>Duration :clock8:</th></tr>" >> $GITHUB_STEP_SUMMARY
+          echo "<tr><td>Passing :white_check_mark:</td><td>$(jq '.totalPassed' cypress/reports/job-summary.json)</td><td>$(jq '.totalFailed' cypress/reports/job-summary.json)</td><td>$(jq '.totalPending' cypress/reports/job-summary.json)</td><td>$(jq '.totalSkipped' cypress/reports/job-summary.json)</td><td>$(jq '.runDuration' cypress/reports/job-summary.json | awk '{print $1/1000 "s"}')</td></tr></table>" >> $GITHUB_STEP_SUMMARY
