@@ -23,7 +23,7 @@ module.exports = defineConfig({
       };
 
       // Define o ambiente de teste
-      const testenv = process.env.TEST_ENV || config.env.testenv || 'automationpractice'; // 'automationpractice' é definido como padrão se nada for passado
+      const testenv = process.env.TEST_ENV || config.env.testenv || 'automationpractice';
 
       // Função para carregar o host baseado no ambiente
       function loadHost(testenv) {
@@ -47,7 +47,7 @@ module.exports = defineConfig({
       // Altera a baseUrl
       config.baseUrl = appUrl;
 
-      // Adiciona o Job Summary
+      // Adiciona o Job Summary e imprime o resumo no console
       on('after:run', (results) => {
         const summary = {
           totalTests: results.totalTests,
@@ -62,13 +62,16 @@ module.exports = defineConfig({
           runDuration: results.totalDuration,
         };
 
-        // Define o caminho onde o resumo será salvo
-        const summaryPath = 'cypress/reports/job-summary.json';
-
         // Salva o resumo em um arquivo JSON
+        const summaryPath = 'cypress/reports/job-summary.json';
         fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2), 'utf-8');
 
-        console.log(`Job Summary saved at ${summaryPath}`);
+        // Formata o resumo para o console
+        const durationInSeconds = (summary.runDuration / 1000).toFixed(3);
+        console.log('\nCypress Results');
+        console.log('Result    Passed ✅  Failed ❌  Pending ✋  Skipped ↩️  Duration 🕗');
+        console.log(`Passing ✅    ${summary.totalPassed}        ${summary.totalFailed}          ${summary.totalPending}         ${summary.totalSkipped}       ${durationInSeconds}s`);
+        console.log(`\nJob Summary saved at ${summaryPath}`);
       });
 
       return config;
