@@ -1,5 +1,6 @@
-Cypress Testes End-to-End
-Descrição
+# Cypress Testes End-to-End
+
+## Descrição
 
 Este projeto é uma suíte de testes automatizados utilizando Cypress para realizar testes end-to-end em um portal web. A suíte é configurada para executar testes automatizados, gerando relatórios detalhados e armazenando artefatos como screenshots e vídeos das execuções dos testes.
 <p align="center"> <a href="#funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#estrutura-do-projeto">Estrutura do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#pipeline-de-cicd">Pipeline de CI/CD</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#contribuicoes">Contribuições</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#licenca">Licença</a> </p>
@@ -10,7 +11,7 @@ Funcionalidades
   Geração de Dados Dinâmicos: Utilização do pacote faker-br para criar dados dinâmicos e realistas durante os testes.
   Armazenamento de Artefatos: Captura e armazenamento de screenshots, vídeos, e relatórios, com retenção de 30 dias utilizando GitHub Actions.
 
-Estrutura do Projeto
+## Estrutura do Projeto
 
   cypress/: Contém os testes Cypress, além de pastas para screenshots, vídeos, e definições de passos (step definitions).
   node_modules/: Dependências instaladas.
@@ -28,7 +29,7 @@ Estrutura do Projeto
 
 - GitHub Actions: Serviço de CI/CD para automatizar fluxos de trabalho no GitHub.
 
-Como Executar
+## Como Executar
 
 -Instalação das Dependências:
 
@@ -46,7 +47,7 @@ Como Executar
 
     npm run generate-multi-cucumber-html-report
 
-    Pipeline de CI/CD
+## Pipeline de CI/CD
 
 O projeto está configurado para ser integrado ao GitHub Actions, onde o pipeline é executado automaticamente em cada push ou pull request. O pipeline realiza as seguintes etapas:
 
@@ -55,7 +56,7 @@ O projeto está configurado para ser integrado ao GitHub Actions, onde o pipelin
 -Gera Relatórios: Cria relatórios detalhados em HTML utilizando Mochawesome e Cucumber.
 -Armazena Artefatos: Salva screenshots, vídeos, e relatórios como artefatos, disponíveis para download por 30 dias.
 
-Contribuições
+## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou sugerir melhorias.
 Licença
