@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const cucumber = require('cypress-cucumber-preprocessor').default;
+const fs = require('fs');
 
 module.exports = defineConfig({
   projectId: '9f5hbh',
@@ -22,7 +23,7 @@ module.exports = defineConfig({
       };
 
       // Define o ambiente de teste
-      const testenv = process.env.TEST_ENV || config.env.testenv || 'automationpractice'; // 'tcemt' é definido como padrão se nada for passado
+      const testenv = process.env.TEST_ENV || config.env.testenv || 'automationpractice'; // 'automationpractice' é definido como padrão se nada for passado
 
       // Função para carregar o host baseado no ambiente
       function loadHost(testenv) {
@@ -33,7 +34,6 @@ module.exports = defineConfig({
           appUrl = `http://${testenv}.automationpractice.pl`;
           loginServer = `http://www.automationpractice.pl${testenv}`;
         } else if (testenv !== 'localhost') {
-          
           throw new Error(`Ambiente de teste inválido: ${testenv}`);
         }
 
@@ -46,6 +46,30 @@ module.exports = defineConfig({
 
       // Altera a baseUrl
       config.baseUrl = appUrl;
+
+      // Adiciona o Job Summary
+      on('after:run', (results) => {
+        const summary = {
+          totalTests: results.totalTests,
+          totalPassed: results.totalPassed,
+          totalFailed: results.totalFailed,
+          totalPending: results.totalPending,
+          totalSkipped: results.totalSkipped,
+          browserName: results.browserName,
+          browserVersion: results.browserVersion,
+          osName: results.osName,
+          osVersion: results.osVersion,
+          runDuration: results.totalDuration,
+        };
+
+        // Define o caminho onde o resumo será salvo
+        const summaryPath = 'cypress/reports/job-summary.json';
+
+        // Salva o resumo em um arquivo JSON
+        fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2), 'utf-8');
+
+        console.log(`Job Summary saved at ${summaryPath}`);
+      });
 
       return config;
     },
