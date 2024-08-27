@@ -24,7 +24,7 @@ Este projeto é uma suíte de testes automatizados utilizando Cypress para reali
 
 - [Cypress](https://www.cypress.io/) : Framework de teste de front-end que facilita a automação de testes de integração e de ponta a ponta.
 
-- [Multiple Cucumber HTML Reporter]([https://www.npmjs.com/package/cypress-mochawesome-reporter](https://www.npmjs.com/package/multiple-cucumber-html-reporter)) : Reporter customizado para Cypress que gera relatórios em HTML.
+- [Multiple Cucumber HTML Reporter]([https://www.npmjs.com/package/multiple-cucumber-html-reporter)) : Reporter customizado para Cypress que gera relatórios em HTML.
 
 - [faker-br](https://www.npmjs.com/package/faker-br) : Biblioteca para geração de dados falsos/dinâmicos com localizações específicas para o Brasil.
 
