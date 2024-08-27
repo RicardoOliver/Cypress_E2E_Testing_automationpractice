@@ -3,7 +3,7 @@
 ## Descrição
 
 Este projeto é uma suíte de testes automatizados utilizando Cypress para realizar testes end-to-end em um portal web. A suíte é configurada para executar testes automatizados, gerando relatórios detalhados e armazenando artefatos como screenshots e vídeos das execuções dos testes.
-<p align="center"> <a href="#funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#estrutura-do-projeto">Estrutura do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#pipeline-de-cicd">Pipeline de CI/CD</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#contribuicoes">Contribuições</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#licenca">Licença</a> </p>
+<p align="center"> <a href="#funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#estrutura-do-projeto">Estrutura do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#pipeline-de-cicd">Pipeline de CI/CD</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</p>
 
 ## Funcionalidades
 
