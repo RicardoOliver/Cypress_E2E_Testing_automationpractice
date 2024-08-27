@@ -38,15 +38,22 @@ jobs:
         run: ls -R cypress/
 
       - name: Upload test results
-        uses: actions/upload-artifact@v4  # Usar v4 da ação upload-artifact
+        uses: actions/upload-artifact@v4  
         with:
           name: cucumber-report
           path: cypress/reports
           
       - name: Armazenar os resultados dos testes em screenshots
-        uses: actions/upload-artifact@v4  # Usar v4 da ação upload-artifact
+        uses: actions/upload-artifact@v4  
         if: ${{ always() }}
         with:
           name: cypress-screenshots-firefox
           path: ./cypress/screenshots
           retention-days: 30
+
+      - name: Generate Job Summary
+        if: always()
+        run: |
+          echo "### Cypress Results" >> $GITHUB_STEP_SUMMARY
+          echo "Result    Passed ✅  Failed ❌  Pending ✋  Skipped ↩️  Duration 🕗" >> $GITHUB_STEP_SUMMARY
+          echo "Passing ✅    $(jq '.totalPassed' cypress/reports/job-summary.json)        $(jq '.totalFailed' cypress/reports/job-summary.json)          $(jq '.totalPending' cypress/reports/job-summary.json)         $(jq '.totalSkipped' cypress/reports/job-summary.json)       $(jq '.runDuration' cypress/reports/job-summary.json | awk '{print $1/1000 "s"}')" >> $GITHUB_STEP_SUMMARY
