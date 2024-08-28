@@ -22,17 +22,16 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-
-      - name: Cache Docker layers
-        uses: actions/cache@v3
         with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
+          install: true
+
+      - name: Create Docker builder
+        run: |
+          docker buildx create --name mybuilder --driver docker-container --use
+          docker buildx inspect --bootstrap
 
       - name: Build Cypress Docker image
-        run: docker build --cache-from=type=local,src=/tmp/.buildx-cache --cache-to=type=local,dest=/tmp/.buildx-cache --tag cypress-e2e .
+        run: docker buildx build --tag cypress-e2e . --load
 
       - name: Run Cypress tests
         run: docker run --rm cypress-e2e
@@ -62,4 +61,4 @@ jobs:
         run: |
           echo "<h2>Cypress Results</h2>" >> $GITHUB_STEP_SUMMARY
           echo "<table><tr><th>Result</th><th>Passed :white_check_mark:</th><th>Failed :x:</th><th>Pending :hand:</th><th>Skipped :leftwards_arrow_with_hook:</th><th>Duration :clock8:</th></tr>" >> $GITHUB_STEP_SUMMARY
-          echo "<tr><td>Passing :white_check_mark:</td><td>$(jq '.totalPassed' cypress/reports/job-summary.json)</td><td>$(jq '.totalFailed' cypress/reports/job-summary.json)</td><td>$(jq '.totalPending' cypress/reports/job-summary.json)</td><td>$(jq '.totalSkipped' cypress/reports/job-summary.json)</td><td>$(jq '.runDuration' cypress/reports/job-summary.json | awk '{print $1/1000 "s"}')</td></tr></table>" >> $GITHUB_STEP_SUMMARY
+          echo "<tr><td>Passing :white_check_mark:</td><td>$(jq '.totalPassed' cypress/reports/job-summary.json)</td><td>$(jq '.totalFailed' cypress/reports/job-summary.json)</td><td>$(jq '.totalPending' cypress/reports/job-summary.json)</td><td>$(jq '.totalSkipped' cypress/reports/job-summary.json')</td><td>$(jq '.runDuration' cypress/reports/job-summary.json | awk '{print $1/1000 "s"}')</td></tr></table>" >> $GITHUB_STEP_SUMMARY
