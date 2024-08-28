@@ -34,7 +34,7 @@ jobs:
         run: docker buildx build --tag cypress-e2e . --load
 
       - name: Run Cypress tests
-        run: docker run --rm cypress-e2e
+        run: docker run -it -v $PWD:/e2e -w /e2e cypress/included:12.17.4
 
       - name: Generate Cucumber HTML Report
         run: docker run --rm cypress-e2e npm run generate-multi-cucumber-html-report
