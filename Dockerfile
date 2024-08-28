@@ -1,5 +1,31 @@
-# Use uma imagem base do Cypress com Node.js 18, Chrome 114, e Firefox 115
-FROM cypress/browsers:node18.16.0-chrome114-ff115
+# Use uma imagem base do Node.js 20
+FROM node:20
+
+# Instalação das dependências necessárias
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    xdg-utils \
+    libglib2.0-0 \
+    libnss3 \
+    libgconf-2-4 \
+    libfontconfig1 \
+    libcanberra-gtk-module \
+    libxss1 \
+    libxtst6 \
+    libgtk-3-0 \
+    xvfb \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
+
+# Instalação do Google Chrome
+RUN curl -sSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" && \
+    dpkg -i google-chrome-stable_current_amd64.deb || apt-get -fy install && \
+    rm google-chrome-stable_current_amd64.deb
+
+# Instalação do Firefox
+RUN apt-get update && apt-get install -y firefox-esr --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
 # Crie e defina o diretório de trabalho
 WORKDIR /app
