@@ -1,4 +1,4 @@
-# Use uma imagem base do Cypress com Node.js, Chrome e Firefox
+# Use uma imagem base do Cypress com Node.js 18, Chrome 114, e Firefox 115
 FROM cypress/browsers:node18.16.0-chrome114-ff115
 
 # Crie e defina o diretório de trabalho
