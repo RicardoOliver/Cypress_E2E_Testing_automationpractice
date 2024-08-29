@@ -20,27 +20,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4  
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          install: true
-
-      - name: Create Docker builder
-        run: |
-          docker buildx create --name mybuilder --driver docker-container --use
-          docker buildx inspect --bootstrap
-
-      - name: Build Cypress Docker image
-        run: docker buildx build --tag cypress-e2e . --load
-
       - name: Run Cypress tests
         run: docker run -i -v $PWD:/e2e -w /e2e cypress/included:12.17.4
 
       - name: Generate Cucumber HTML Report
-        run: docker run --rm cypress-e2e npm run generate-multi-cucumber-html-report
+        run: docker run --rm -v $PWD:/e2e -w /e2e cypress/included:12.17.4 npm run generate-multi-cucumber-html-report
 
       - name: List files for debugging
-        run: docker run --rm cypress-e2e ls -R cypress/
+        run: ls -R cypress/
 
       - name: Upload test results
         uses: actions/upload-artifact@v4  
